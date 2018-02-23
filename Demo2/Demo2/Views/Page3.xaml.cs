@@ -1,3 +1,4 @@
+using Microsoft.AppCenter.Analytics;
 using Xamarin.Forms;
 
 namespace Demo2.Views
@@ -7,6 +8,8 @@ namespace Demo2.Views
         public Page3()
         {
             InitializeComponent();
+
+            Analytics.TrackEvent("PAGE3 Viewed");
         }
     }
 }

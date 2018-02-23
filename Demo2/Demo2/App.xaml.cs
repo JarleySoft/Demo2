@@ -6,6 +6,10 @@ using Xamarin.Forms.Xaml;
 using Demo2.Views;
 using Demo2.ViewModels;
 
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Demo2
 {
@@ -33,6 +37,16 @@ namespace Demo2
             containerRegistry.RegisterForNavigation<Page1, Page1ViewModel>();
             containerRegistry.RegisterForNavigation<Page2, Page2ViewModel>();
             containerRegistry.RegisterForNavigation<Page3, Page3ViewModel>();
+        }
+
+        protected override void OnStart()
+        {
+            base.OnStart();
+
+            AppCenter.Start("ios=f4e8892e-3238-4d85-96ba-a497bd82cb65;" +
+                            "uwp={Your UWP App secret here};" +
+                            "android={Your Android App secret here}",
+                            typeof(Analytics), typeof(Crashes));
         }
     }
 }
